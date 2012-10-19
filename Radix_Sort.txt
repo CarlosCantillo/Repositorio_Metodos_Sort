@@ -1,0 +1,17 @@
+# Carlos.Cantillo - Radix Sort
+
+def radixSortFixedString(array):
+
+    	fixedLength = len(array[0])
+    	oa = ord('a'); # First character code
+    	oz = ord('z'); # Last character code
+    	n = oz - oa + 1; # Number of buckets
+    	buckets = [[] for i in range(0, n)] # The buckets
+    	for position in reversed(range(0, fixedLength)):
+        	for string in array:
+            	buckets[ord(string[position]) - oa].append(string) # Add to bucket
+        	del array[:]
+        	for bucket in buckets: # Reassemble array in new order
+            		array.extend(bucket)
+            		del bucket[:]
+    	return array
